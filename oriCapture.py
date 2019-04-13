@@ -14,11 +14,11 @@ from matplotlib import pyplot
     # degree angle where zero is the syringe facing upward
 def oriCapture(x,y,w,h,img):
     
-    color_0 = cv2.imread(img,0)
-    crop_color_0 = color_0[y:y+h, x:x+w]
+    #color_0 = cv2.imread(img,0)
+    crop_colour = img[y:y+h, x:x+w]
 
-    cv2.threshold(crop_color_0,x,y,cv2.THRESH_BINARY)
-    crop_color_0[crop_color_0 < 144] = 0
+    cv2.threshold(crop_colour,x,y,cv2.THRESH_BINARY)
+    crop_colour[crop_colour < 144] = 0
     
     Q1 = 0
     Q2 = 0
@@ -29,30 +29,30 @@ def oriCapture(x,y,w,h,img):
     Q8 = 0
     Q9 = 0
 
-    for i in range(0,int(numpy.rint(len(crop_color_0)/3))):
-        for j in range(0,int(numpy.rint(len(crop_color_0[i])/3))):
-            Q1 += crop_color_0[i][j]
-    for i in range(int(numpy.rint(len(crop_color_0)/3) + 1), (int(2*numpy.rint(len(crop_color_0)/3)))):
-        for j in range(0,int(numpy.rint(len(crop_color_0[i])/3))):
-            Q2 += crop_color_0[i][j]
-    for i in range((int(2*numpy.rint(len(crop_color_0))/3) + 1), int(numpy.rint(len(crop_color_0)))):
-        for j in range(0,int(numpy.rint(len(crop_color_0[i])/3))):
-            Q3 += crop_color_0[i][j]
-    for i in range(0,int(numpy.rint(len(crop_color_0)/3))):
-        for j in range(int(numpy.rint(len(crop_color_0[i])/3) + 1),(int(2*numpy.rint(len(crop_color_0[i]))/3))):
-            Q4 += crop_color_0[i][j]
-    for i in range((int(2*numpy.rint(len(crop_color_0))/3) + 1), int(numpy.rint(len(crop_color_0)))):
-        for j in range(int(numpy.rint(len(crop_color_0[i])/3) + 1),(int(2*numpy.rint(len(crop_color_0[i]))/3))):
-            Q6 += crop_color_0[i][j]
-    for i in range(0,int(numpy.rint(len(crop_color_0)/3))):
-        for j in range((2*int(numpy.rint(len(crop_color_0[i]))/3) + 1),int(numpy.rint(len(crop_color_0[i])))):
-            Q7 += crop_color_0[i][j]
-    for i in range(int(numpy.rint(len(crop_color_0)/3) + 1), (int(2*numpy.rint(len(crop_color_0))/3))):
-        for j in range((int(2*numpy.rint(len(crop_color_0[i]))/3) + 1),int(numpy.rint(len(crop_color_0[i])))):
-            Q8 += crop_color_0[i][j]
-    for i in range((int(2*numpy.rint(len(crop_color_0))/3) + 1), int(numpy.rint(len(crop_color_0)))):
-        for j in range((int(2*numpy.rint(len(crop_color_0[i]))/3) + 1),int(numpy.rint(len(crop_color_0[i])))):
-            Q9 += crop_color_0[i][j]
+    for i in range(0,int(numpy.rint(len(crop_colour)/3))):
+        for j in range(0,int(numpy.rint(len(crop_colour[i])/3))):
+            Q1 += crop_colour[i][j]
+    for i in range(int(numpy.rint(len(crop_colour)/3) + 1), (int(2*numpy.rint(len(crop_colour)/3)))):
+        for j in range(0,int(numpy.rint(len(crop_colour[i])/3))):
+            Q2 += crop_colour[i][j]
+    for i in range((int(2*numpy.rint(len(crop_colour))/3) + 1), int(numpy.rint(len(crop_colour)))):
+        for j in range(0,int(numpy.rint(len(crop_colour[i])/3))):
+            Q3 += crop_colour[i][j]
+    for i in range(0,int(numpy.rint(len(crop_colour)/3))):
+        for j in range(int(numpy.rint(len(crop_colour[i])/3) + 1),(int(2*numpy.rint(len(crop_colour[i]))/3))):
+            Q4 += crop_colour[i][j]
+    for i in range((int(2*numpy.rint(len(crop_colour))/3) + 1), int(numpy.rint(len(crop_colour)))):
+        for j in range(int(numpy.rint(len(crop_colour[i])/3) + 1),(int(2*numpy.rint(len(crop_colour[i]))/3))):
+            Q6 += crop_colour[i][j]
+    for i in range(0,int(numpy.rint(len(crop_colour)/3))):
+        for j in range((2*int(numpy.rint(len(crop_colour[i]))/3) + 1),int(numpy.rint(len(crop_colour[i])))):
+            Q7 += crop_colour[i][j]
+    for i in range(int(numpy.rint(len(crop_colour)/3) + 1), (int(2*numpy.rint(len(crop_colour))/3))):
+        for j in range((int(2*numpy.rint(len(crop_colour[i]))/3) + 1),int(numpy.rint(len(crop_colour[i])))):
+            Q8 += crop_colour[i][j]
+    for i in range((int(2*numpy.rint(len(crop_colour))/3) + 1), int(numpy.rint(len(crop_colour)))):
+        for j in range((int(2*numpy.rint(len(crop_colour[i]))/3) + 1),int(numpy.rint(len(crop_colour[i])))):
+            Q9 += crop_colour[i][j]
 
     degrees_0 = Q2 + Q8
     degrees_45 = Q3 + Q7
